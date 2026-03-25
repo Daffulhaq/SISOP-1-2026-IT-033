@@ -15,10 +15,15 @@ echo "Jumlah gerbong penumpang KANJ adalah ${carriage} gerbong"
 ;;
 
 c)
-IFS="|" read oldest age <<< $(awk -F ',' 'NR>1{
+oldest=$(awk -F',' 'NR>1{
 if($2>max){max=$2; nama=$1}
 }
-END {print nama "|" max}' $file)
+END {print nama}' "$file")
+
+age=$(awk -F',' 'NR>1{
+if($2>max){max=$2}
+}
+END {print max}' "$file")
 
 echo "${oldest} adalah penumpang kereta tertua dengan usia ${age} tahun"
 ;;

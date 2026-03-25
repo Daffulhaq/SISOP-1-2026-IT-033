@@ -13,4 +13,5 @@ lon_mid=$(echo "($lon_min + $lon_max) / 2" | bc -l)
 
 echo "$lat_mid, $lon_mid" > posisipusaka.txt
 
-echo "Titik tengah disimpan di posisipusaka.txt"
+echo "Koordinat pusat: "
+echo "$lat_mid, $lon_mid"
