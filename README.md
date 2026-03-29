@@ -138,6 +138,35 @@ echo "Data tersimpan ke titik-penting.txt"
 ```
 <img width="1440" height="153" alt="Screenshot 2026-03-29 223040" src="https://github.com/user-attachments/assets/015a8857-1744-4573-a0dc-a7f2ab95cece" />
 
+4 koordinat yang telah diambil dari `gsxtrack.json` akan membentuk seperti persegi jika diproyeksikan ke koordinat geografis. Maka, untuk menemukan titik lokasi pusaka (titik pusat persegi), praktikan membuat shell scripting pada file `nemupusaka.sh` untuk mencari titik tengah persegi tersebut. Koordinat titik tengah tersebut disimpan ke file `posisipusaka.txt`.
+```bash
+#!/bin/bash
+
+file="titik-penting.txt"
+
+lat_min=$(awk -F', ' '{print $3}' $file | sort -n | head -1)
+lat_max=$(awk -F', ' '{print $3}' $file | sort -n | tail -1)
+
+lon_min=$(awk -F', ' '{print $4}' $file | sort -n | head -1)
+lon_max=$(awk -F', ' '{print $4}' $file | sort -n | tail -1)
+
+lat_mid=$(echo "($lat_min + $lat_max) / 2" | bc -l)
+lon_mid=$(echo "($lon_min + $lon_max) / 2" | bc -l)
+
+echo "$lat_mid, $lon_mid" > posisipusaka.txt
+
+echo "Koordinat pusat: "
+echo "$lat_mid, $lon_mid"
+```
+
+### Output
+`cat posisipusaka.txt` akan mencetak koordinat lokasi pusaka yang dicari.
+<img width="1438" height="53" alt="Screenshot 2026-03-29 223928" src="https://github.com/user-attachments/assets/365cb67e-b53b-41a8-985d-0a943026e703" />
+
+### Kendala
+Tidak ada.
+
+
 
 
 
