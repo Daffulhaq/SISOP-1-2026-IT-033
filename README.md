@@ -118,5 +118,27 @@ Maka, folder `peta-gunung-kawi` akan muncul.
 Masuk ke folder `peta-gunung-kawi`, terdapat sebuah file bernama gsxtrack.json, kemudian file tersebut dibaca menggunakan perintah `cat`
 <img width="1435" height="685" alt="Screenshot 2026-03-29 141404" src="https://github.com/user-attachments/assets/55e347ab-7b67-4c9a-a446-7cdeaf4ddee5" />
 
+Kemudian, file `parserkoordinat.sh` dibuat. File ini berisi shell script untuk mengambil informasi "id", "site_name", "latitude", "longitude", merapikan susunan data, dan mengedit beberapa simbol, seperti menghapus `"` dan `,`, dan mengedit simbol `:` menjadi `,`. Hasil shell scripting disimpan ke file `titik-penting.txt`
+```bash
+#!/bin/bash
+
+file="gsxtrack.json"
+
+grep -E '"id"|"site_name"|"latitude"|"longitude"' $file \
+| sed 's/[",]//g' \
+| sed 's/: /,/g' \
+| awk -F',' '
+/id/ {id=$2}
+/site_name/ {site=$2}
+/latitude/ {lat=$2}
+/longitude/ {lon=$2; print id ", " site ", " lat ", " lon}
+' > titik-penting.txt
+
+echo "Data tersimpan ke titik-penting.txt"
+```
+<img width="1440" height="153" alt="Screenshot 2026-03-29 223040" src="https://github.com/user-attachments/assets/015a8857-1744-4573-a0dc-a7f2ab95cece" />
+
+
+
 
 
