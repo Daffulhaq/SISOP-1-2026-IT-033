@@ -93,3 +93,30 @@ Pada awalnya, perintah `./KANJ.sh passenger.csv b` akan mengeluarkan output `5 g
  Gerbong3$`.
  Masalah diselesaikan dengan menghapus baris terakhir tersebut pada `nano passenger.csv`.
 ## Soal 2
+### Penyelesaian
+
+Langkah pertama yang dilakukan adalah menginstall package `gdown` menggunakan pip.
+```bash
+sudo apt install python3-pip
+pip install gdown
+```
+Setelah menginstall `gdown`, praktikan mengunduh file dari link google drive yang diberikan menggunakan `gdown` dan menyimpannya ke folder `ekspedisi`.
+```bash
+gdown https://drive.google.com/uc?id=1q10pHSC3KFfvEiCN3V6PTroPR7YGHF6Q
+```
+Maka, file `peta-ekspedisi-amba.pdf` akan muncul di dalam folder `ekspedisi`.
+<img width="976" height="47" alt="Screenshot 2026-03-29 221548" src="https://github.com/user-attachments/assets/d772031b-f3e2-4443-aff7-66d172477724" />
+
+Kemudian, praktikan membaca file tersebut menggunakan perintah `cat`, dan menemukan sebuah tautan di dalamnya. Tautan disebut akan menuju kepada sebuah folder yang harus praktiakn clone-kan di folder `ekspedisi`.
+<img width="1452" height="236" alt="Screenshot 2026-03-29 221854" src="https://github.com/user-attachments/assets/a7d871a3-470e-4bdc-9f92-bffa08f73cd5" />
+```bash
+git clone https://github.com/pocongcyber77/peta-gunung-kawi.git
+```
+Maka, folder `peta-gunung-kawi` akan muncul.
+<img width="981" height="51" alt="Screenshot 2026-03-29 222145" src="https://github.com/user-attachments/assets/64fa6ad4-3388-41ea-8c6a-fbab23ce0010" />
+
+Masuk ke folder `peta-gunung-kawi`, terdapat sebuah file bernama gsxtrack.json, kemudian file tersebut dibaca menggunakan perintah `cat`
+<img width="1435" height="685" alt="Screenshot 2026-03-29 141404" src="https://github.com/user-attachments/assets/55e347ab-7b67-4c9a-a446-7cdeaf4ddee5" />
+
+
+
